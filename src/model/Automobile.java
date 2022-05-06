@@ -16,5 +16,15 @@ public abstract class Automobile extends Vehicle {
         this.polarized=polarized;
 
     }
+
+    public String toString(){
+
+        String isPolarized="No";
+
+        if (polarized==true){
+            isPolarized="Yes";
+        }
+        return super.toString() + "\n Number of doors: " + doorNum + "\n Polarized: " + isPolarized ;
+    }
     
 }

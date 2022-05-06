@@ -27,13 +27,14 @@ public abstract class Vehicle {
 
     }
 
-    public String getBrand(){
-        return brand;
+    public VehicleType getType(){
+        return type;
     }
 
     public String toString(){
         
-        return brand;
+        return "\n Base price: " + basePrice + "\n Sell price: " + sellPrice + "\n Brand: " + brand + "\n Model: " + model 
+            + "\n Mileage: " + mileage + "\n Plate: " + plate;
     }
 
 }

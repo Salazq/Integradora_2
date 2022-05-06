@@ -253,7 +253,7 @@ public class Concessionaire {
 
         for (int i = 0; i < vehicles.size() && found==false; i++) {
             
-            if  (vehicles.get(i).getBrand(). equals(name)){
+            if  (vehicles.get(i).getType(). equals(VehicleType.NEW)){
 
                 pos=i;
                 found=true;
@@ -263,17 +263,115 @@ public class Concessionaire {
 	}
 
 
-    public String showList(int list) {
+    public String showInfo(int filter1, int filter2) {
 
         String out="";
 
-        if (list==1){
+        switch(filter1) {
 
-            for (int i = 0; i < vehicles.size(); i++) {
-               
-                out += vehicles.get(i).toString() + "\n";
+            case 1:
+
+                switch(filter2) {
+
+                    case 1:
+
+                        for (int i = 0; i < vehicles.size(); i++) {
+
+                            if (vehicles.get(i) instanceof Automobile)
+                
+                                out+= "\n---------Vehicle---------\n" + vehicles.get(i).toString() + "\n";
+                        }
+                        break;
+
+                    case 2:
+
+                        for (int i = 0; i < vehicles.size(); i++) {
+
+                            if (vehicles.get(i) instanceof Motorcycle)
+            
+                                out+= "\n---------Vehicle---------\n" + vehicles.get(i).toString() + "\n";
+                        }
+                        break;
+                    default:
+                        System.out.println("invalid option");
+                    
+                    }
+                break;
+
+            case 2:
+
+                switch(filter2) {
+
+                    case 1:
+
+                        for (int i = 0; i < vehicles.size(); i++) {
+
+                            if ((vehicles.get(i)instanceof Gas) && (((Gas)vehicles.get(i)).getGasType().equals(GasType.REGULAR)))
+            
+                                out+= "\n---------Vehicle---------\n" + vehicles.get(i).toString() + "\n";
+                        }
+        
+                        break;
+                    case 2:
+
+                        for (int i = 0; i < vehicles.size(); i++) {
+
+                            if ((vehicles.get(i)instanceof Gas) && (((Gas)vehicles.get(i)).getGasType().equals(GasType.DIESEL)))
+            
+                                out+= "\n---------Vehicle---------\n" + vehicles.get(i).toString() + "\n";
+                        }
+                        break;
+
+                    case 3:
+
+                        for (int i = 0; i < vehicles.size(); i++) {
+
+                            if ((vehicles.get(i)instanceof Gas) && (((Gas)vehicles.get(i)).getGasType().equals(GasType.EXTRA)))
+            
+                                out+= "\n---------Vehicle---------\n" + vehicles.get(i).toString() + "\n";
+                        }
+                        
+                        break;
+                    default:
+                        System.out.println("invalid option");
+                    
+                    }
+                break;
+                
+            case 3:
+
+                switch(filter2) {
+
+                    case 1:
+
+                        for (int i = 0; i < vehicles.size(); i++) {
+
+                            if (((vehicles.get(i)).getType().equals(VehicleType.NEW)))
+            
+                                out+= "\n---------Vehicle---------\n" + vehicles.get(i).toString() + "\n";
+                        }
+        
+                        break;
+                    case 2:
+
+                        for (int i = 0; i < vehicles.size(); i++) {
+
+                            if (((vehicles.get(i)).getType().equals(VehicleType.USED)))
+            
+                                out+= "\n---------Vehicle---------\n" + vehicles.get(i).toString() + "\n";
+                        }
+                        
+                        break;
+                    default:
+                        System.out.println("invalid option");
+                    }   
+                    
+                break;
+    
+            default:
+                System.out.println("invalid option");
+            
             }
-        }
 
         return out;
 	}

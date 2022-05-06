@@ -15,5 +15,13 @@ public class Gas extends Automobile{
         this.consumption=consumption;
         
     }
+
+    public String toString(){
+
+        return super.toString() + "\n Fuell capacity: " + capacity + "\n Fuell consumption: " + consumption;
+    }
     
+    public GasType getGasType(){
+        return  gasType;
+    }
 }

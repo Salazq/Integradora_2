@@ -24,7 +24,10 @@ public class Hibrid extends Automobile{
         this.duration=duration;
         this.electricConsumption=electricConsumption;
         
-        
     }
     
+    public String toString(){
+
+        return super.toString() + "\n Battery duration: " + duration + "\n Battery consumption: " + electricConsumption + "\n Fuell capacity: " + capacity + "\n Fuell consumption: " + gasConsumption;
+    }
 }

@@ -51,15 +51,16 @@ public class Main{
 		case 0:
 			System.out.println("Bye");
 			break;
+
 		case 1:
-		    	registerVehicle();
+		    registerVehicle();
 			break;
 		case 2:
             
 			break;
 	
 		case 3:
-                
+            showInformation();  
 			break;
 
 		default:
@@ -173,7 +174,7 @@ public class Main{
                         consumption=sc.nextDouble();
 
                         shop.addVehicle(basePrice, sellPrice, brand, model,  mileage, type, plate, carType, doorNum, isPolarized, 
-                        chargerType, duration, consumption);
+                        chargerType, duration, consumption,"l");
                         System.out.println(" Vehicle has been added");
                         
                         break;
@@ -232,14 +233,95 @@ public class Main{
             }
     }
 
-    public void showList(){
 
-        int list;
+    public void showInformation(){
 
-        System.out.println("\nSelect a list\n 1) Good\n 2)Naugthy\n");
-        list=sc.nextInt();
+        int filter1;
+        int filter2;
 
-        System.out.println("\n"+shop.showList(list));
+
+        System.out.println("\nSelect an option \n 1)Vehicle Type \n 2)Fuel Type\n 3)New/Used");
+        filter1=sc.nextInt();
+
+        switch(filter1) {
+
+            case 1:
+
+                System.out.println("\nSelect an option \n 1)Automobile \n 2)MotorCycle");
+                filter2=sc.nextInt();
+
+                switch(filter2) {
+
+                    case 1:
+
+                        System.out.println(shop.showInfo(filter1, filter2));
+        
+                        break;
+                    case 2:
+                        System.out.println(shop.showInfo(filter1, filter2));
+                        break;
+                    default:
+                        System.out.println("invalid option");
+                    
+                    }
+                break;
+
+            case 2:
+
+                System.out.println("\nSelect an option \n 1)Regular \n 2)Diesel \n 2)Extra");
+                filter2=sc.nextInt();
+
+                switch(filter2) {
+
+                    case 1:
+
+                         System.out.println(shop.showInfo(filter1, filter2));
+        
+                        break;
+                    case 2:
+
+                        System.out.println(shop.showInfo(filter1, filter2));
+                        
+                        break;
+
+                    case 3:
+
+                        System.out.println(shop.showInfo(filter1, filter2));
+                        
+                        break;
+                    default:
+                        System.out.println("invalid option");
+                    
+                    }
+                break;
+                
+        
+            case 3:
+
+                System.out.println("\nSelect an option \n 1)New \n 2)Used");
+                filter2=sc.nextInt();
+
+                switch(filter2) {
+
+                    case 1:
+
+                        System.out.println(shop.showInfo(filter1, filter2));
+        
+                        break;
+                    case 2:
+
+                        System.out.println(shop.showInfo(filter1, filter2));
+                        
+                        break;
+                    default:
+                        System.out.println("invalid option");
+                    }   
+                    
+                break;
+    
+            default:
+                System.out.println("invalid option");
+            
+            }
     }
-
 }

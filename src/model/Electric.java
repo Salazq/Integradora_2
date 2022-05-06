@@ -16,5 +16,10 @@ public class Electric extends Automobile{
         this.consumption=consumption;
         
     }
+
+    public String toString(){
+
+        return super.toString() + "\n Battery duration: " + duration + "\n Battery consumption: " + consumption;
+    }
     
 }

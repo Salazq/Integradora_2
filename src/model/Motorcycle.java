@@ -16,5 +16,10 @@ public class Motorcycle extends Vehicle{
         this.consumption=consumption;
 
     }
-    
+
+    public String toString(){
+
+        return super.toString() + "\n Fuell capacity: " + capacity + "\n Fuell consumption " + consumption;
+    }
+
 }
