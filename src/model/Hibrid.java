@@ -2,17 +2,17 @@ package model;
 
 public class Hibrid extends Automobile{
 
-    private String gasType;
+    private GasType gasType;
     private double capacity;
     private double gasConsumption;
 
-    private String chargerType;
+    private ChargeType chargeType;
     private double duration;
     private double electricConsumption;
 
-    public Hibrid(double basePrice, double sellPrice, String brand, String model, double mileage, String type,
-            String plate, String carType, int doorNum, boolean polarized, String gasType, double capacity, double gasConsumption, 
-            String chargerType, double duration, double electricConsumption) {
+    public Hibrid(double basePrice, double sellPrice, String brand, String model, double mileage, VehicleType type,
+            String plate, CarType carType, int doorNum, boolean polarized, GasType gasType, double capacity, double gasConsumption, 
+            ChargeType chargeType, double duration, double electricConsumption) {
 
         super(basePrice, sellPrice, brand, model, mileage, type, plate, carType, doorNum, polarized);
 
@@ -20,7 +20,7 @@ public class Hibrid extends Automobile{
         this.capacity=capacity;
         this.gasConsumption=gasConsumption;
 
-        this.chargerType=chargerType;
+        this.chargeType=chargeType;
         this.duration=duration;
         this.electricConsumption=electricConsumption;
         

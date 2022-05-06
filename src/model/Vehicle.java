@@ -1,5 +1,7 @@
 package model;
 
+import javax.swing.text.Document;
+
 public abstract class Vehicle {
 
     private double basePrice;
@@ -7,11 +9,13 @@ public abstract class Vehicle {
     private String brand;
     private String model;
     private double mileage;
-    private String type;
+    private VehicleType type;
     private String plate;
+    private Document[] documents;
 
 
-    public Vehicle (double basePrice, double sellPrice, String brand, String model, double mileage, String type, String plate){
+
+    public Vehicle (double basePrice, double sellPrice, String brand, String model, double mileage, VehicleType type, String plate){
 
         this.basePrice= basePrice;
         this.sellPrice= sellPrice;

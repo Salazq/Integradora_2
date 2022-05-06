@@ -1,6 +1,6 @@
 package model;
 
-public class Soat extends document{
+public class Soat extends Document{
 
     private double coverage;
 

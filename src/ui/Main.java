@@ -87,12 +87,14 @@ public class Main{
 
         int carType;
         int doorNum;
-        boolean polarized;
+        int polarized;
+        boolean isPolarized;
 
         int gasType;
 
         int chargerType;
         double duration;
+        double electricConsumption;
 
 
         System.out.println("\nType the base price");
@@ -129,8 +131,15 @@ public class Main{
                 System.out.println("\nType the number of doors");
                 doorNum=sc.nextInt();
 
-                System.out.println("\nIs it polarized?");
-                polarized=sc.nextBoolean();
+                System.out.println("\nIs it polarized? \n 1)Yes \n 2)No");
+                polarized=sc.nextInt();
+
+                if (polarized==1){
+                    isPolarized=true;
+                }
+                else{
+                    isPolarized=false;
+                }
 
                 System.out.println("\nSelect an option \n 1)Gas car \n 2)Electric car \n 3)Hibrid car");
                 filter2=sc.nextInt();
@@ -147,7 +156,10 @@ public class Main{
                         System.out.println("Type the consumption");
                         consumption=sc.nextDouble();
 
-                            
+                        shop.addVehicle(basePrice, sellPrice, brand, model,  mileage, type, plate, carType, doorNum, isPolarized, 
+                        gasType, capacity, consumption);
+                        System.out.println(" Vehicle has been added");
+ 
                         break;
                     case 2:
 
@@ -159,6 +171,10 @@ public class Main{
 
                         System.out.println("Type the consumption");
                         consumption=sc.nextDouble();
+
+                        shop.addVehicle(basePrice, sellPrice, brand, model,  mileage, type, plate, carType, doorNum, isPolarized, 
+                        chargerType, duration, consumption);
+                        System.out.println(" Vehicle has been added");
                         
                         break;
                 
@@ -176,10 +192,18 @@ public class Main{
                         System.out.println("Type the duration of the battery");
                         duration=sc.nextDouble();
 
-                        System.out.println("Type the consumption");
+                        System.out.println("Type the gas consumption");
                         consumption=sc.nextDouble();
+
+                        System.out.println("Type the electric consumption");
+                        electricConsumption=sc.nextDouble();
+
+                        shop.addVehicle(basePrice, sellPrice, brand, model,  mileage, type, plate, carType, doorNum, isPolarized, 
+                        gasType, capacity, consumption, chargerType, duration, electricConsumption);
+                        System.out.println(" Vehicle has been added");
                             
                         break;
+
             
                     default:
                         System.out.println("invalid option");
@@ -189,7 +213,7 @@ public class Main{
                 break;
             case 2:
 
-                System.out.println("\nSelect an option \n 1)Standar \n 2)Sport\n 3)Scooter\n 2)Cross");
+                System.out.println("\nSelect an option \n 1)Standard \n 2)Sport\n 3)Scooter\n 2)Cross");
                 cycleType=sc.nextInt();
 
                 System.out.println("Type the capacity");

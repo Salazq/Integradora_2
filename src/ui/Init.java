@@ -10,8 +10,9 @@ public class Init {
 
         ArrayList <Vehicle> vehicles= new ArrayList<Vehicle>();
 
-		Vehicle newVechicle = new Automobile(1, 2, "BMW", "M2", 30, "New", "Abc", "Sedan", 4, true);
+		Vehicle newVechicle = new Gas(100, 200, "BMW", "M2", 30, VehicleType.NEW, "Abc", CarType.SEDAN, 5, true, GasType.REGULAR, 6, 7);
         vehicles.add(newVechicle);
+
 
         return vehicles;
     }

@@ -1,13 +1,13 @@
 package model;
 
-public class Automobile extends Vehicle {
+public abstract class Automobile extends Vehicle {
 
-    private String carType;
+    private CarType carType;
     private int doorNum;
     private boolean polarized;
 
 
-    public Automobile(double basePrice, double sellPrice, String brand, String model, double mileage, String type, String plate, String
+    public Automobile(double basePrice, double sellPrice, String brand, String model, double mileage, VehicleType type, String plate, CarType
     carType, int doorNum, boolean polarized){
 
         super(basePrice, sellPrice, brand, model, mileage, type, plate);

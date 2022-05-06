@@ -1,6 +1,6 @@
 package model;
 
-public class MechanicalReview extends document{
+public class MechanicalReview extends Document{
 
     private double gasLevel;
 
