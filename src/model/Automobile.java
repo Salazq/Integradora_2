@@ -8,9 +8,9 @@ public abstract class Automobile extends Vehicle {
 
 
     public Automobile(double basePrice, double sellPrice, String brand, String model, double mileage, VehicleType type, String plate, CarType
-    carType, int doorNum, boolean polarized){
+    carType, int doorNum, boolean polarized, double displacement, Document [] documents){
 
-        super(basePrice, sellPrice, brand, model, mileage, type, plate);
+        super(basePrice, sellPrice, brand, model, mileage, type, plate, displacement, documents);
         this.carType=carType;
         this.doorNum=doorNum;
         this.polarized=polarized;

@@ -8,12 +8,21 @@ public class Electric extends Automobile{
 
 
     public Electric(double basePrice, double sellPrice, String brand, String model, double mileage, VehicleType type,
-            String plate, CarType carType, int doorNum, boolean polarized, ChargeType chargeType, double duration, double consumption) {
+            String plate, CarType carType, int doorNum, boolean polarized, ChargeType chargeType, double duration, double displacement,
+            Document[] documents) {
 
-        super(basePrice, sellPrice, brand, model, mileage, type, plate, carType, doorNum, polarized);
+        super(basePrice, sellPrice, brand, model, mileage, type, plate, carType, doorNum, polarized, displacement, documents);
         this.chargeType=chargeType;
         this.duration=duration;
-        this.consumption=consumption;
+
+        if (chargeType.equals(ChargeType.FAST_CHARGE)){
+
+            consumption= (duration +13)* (displacement/100);
+        }
+        else{
+            consumption= (duration +18)* (displacement/100);
+        }
+        
         
     }
 

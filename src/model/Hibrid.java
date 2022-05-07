@@ -11,23 +11,31 @@ public class Hibrid extends Automobile{
     private double electricConsumption;
 
     public Hibrid(double basePrice, double sellPrice, String brand, String model, double mileage, VehicleType type,
-            String plate, CarType carType, int doorNum, boolean polarized, GasType gasType, double capacity, double gasConsumption, 
-            ChargeType chargeType, double duration, double electricConsumption) {
+            String plate, CarType carType, int doorNum, boolean polarized, GasType gasType, double capacity, ChargeType chargeType,
+            double duration, double displacement,  Document[] documents){
 
-        super(basePrice, sellPrice, brand, model, mileage, type, plate, carType, doorNum, polarized);
+        super(basePrice, sellPrice, brand, model, mileage, type, plate, carType, doorNum, polarized, displacement, documents);
 
         this.gasType=gasType;
         this.capacity=capacity;
-        this.gasConsumption=gasConsumption;
+        gasConsumption=capacity*(displacement/180);
 
         this.chargeType=chargeType;
         this.duration=duration;
-        this.electricConsumption=electricConsumption;
+
+        if (chargeType.equals(ChargeType.FAST_CHARGE)){
+
+            electricConsumption= duration * (displacement/200);
+        }
+        else{
+            electricConsumption= (duration +7)* (displacement/200);
+        }
+
         
     }
     
     public String toString(){
 
-        return super.toString() + "\n Battery duration: " + duration + "\n Battery consumption: " + electricConsumption + "\n Fuell capacity: " + capacity + "\n Fuell consumption: " + gasConsumption;
+        return super.toString() + "\n Battery duration: " + duration + "\n Battery consumption: " + electricConsumption + "\n Fuel capacity: " + capacity + "\n Fuel consumption: " + gasConsumption;
     }
 }

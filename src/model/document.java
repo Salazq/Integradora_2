@@ -12,4 +12,8 @@ public abstract class Document{
         this.image=image;
     }
 
+    public int getYear(){
+        return year;
+    }
+
 }

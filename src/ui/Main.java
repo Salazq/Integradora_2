@@ -56,9 +56,8 @@ public class Main{
 		    registerVehicle();
 			break;
 		case 2:
-            
+            calculateTotalPrice();
 			break;
-	
 		case 3:
             showInformation();  
 			break;
@@ -84,18 +83,28 @@ public class Main{
 
         int cycleType;
         double capacity;
-        double consumption;
+        double displacement;
 
         int carType;
         int doorNum;
         int polarized;
         boolean isPolarized;
 
+
         int gasType;
 
         int chargerType;
         double duration;
-        double electricConsumption;
+
+        int hasSoat;
+        double sPrice=0;
+        int sYear=0;
+        double coverage=0;
+
+        int hasReview;
+        double mPrice=0;
+        int mYear=0;
+        double gasLevel=0;
 
 
         System.out.println("\nType the base price");
@@ -113,8 +122,41 @@ public class Main{
         System.out.println("\nType the mileage");
         mileage=sc.nextDouble();
 
+        System.out.println("Type the displacement");
+        displacement=sc.nextDouble();
+
         System.out.println("\nType the plate");
         plate=sc.next();
+
+        System.out.println("\nDoes it have Soat\n 1)Yes\n 2)No");
+        hasSoat=sc.nextInt();
+
+        if (hasSoat==1){
+
+            System.out.println("\nType the price");
+            sPrice=sc.nextDouble();
+
+            System.out.println("\nType the year");
+            sYear=sc.nextInt();
+
+            System.out.println("\nType the coverage value");
+            coverage=sc.nextDouble();
+        }
+
+        System.out.println("\nDoes it have mechanical review \n 1)Yes\n 2)No");
+        hasReview=sc.nextInt();
+
+        if (hasReview==1){
+
+            System.out.println("\nType the price");
+            mPrice=sc.nextDouble();
+
+            System.out.println("\nType the year");
+            mYear=sc.nextInt();
+
+            System.out.println("\nType the gas level");
+            gasLevel=sc.nextDouble();
+        }
 
         System.out.println("\nSelect an option \n 1)New\n 2)Used");
         type=sc.nextInt();
@@ -154,11 +196,8 @@ public class Main{
                         System.out.println("Type the capacity");
                         capacity=sc.nextDouble();
 
-                        System.out.println("Type the consumption");
-                        consumption=sc.nextDouble();
-
                         shop.addVehicle(basePrice, sellPrice, brand, model,  mileage, type, plate, carType, doorNum, isPolarized, 
-                        gasType, capacity, consumption);
+                        gasType, capacity, displacement, sPrice, sYear, mPrice, mYear, coverage, gasLevel);
                         System.out.println(" Vehicle has been added");
  
                         break;
@@ -170,11 +209,8 @@ public class Main{
                         System.out.println("Type the duration of the battery");
                         duration=sc.nextDouble();
 
-                        System.out.println("Type the consumption");
-                        consumption=sc.nextDouble();
-
                         shop.addVehicle(basePrice, sellPrice, brand, model,  mileage, type, plate, carType, doorNum, isPolarized, 
-                        chargerType, duration, consumption,"l");
+                        chargerType, duration, displacement,"l", sPrice, sYear, mPrice, mYear, coverage, gasLevel);
                         System.out.println(" Vehicle has been added");
                         
                         break;
@@ -193,14 +229,8 @@ public class Main{
                         System.out.println("Type the duration of the battery");
                         duration=sc.nextDouble();
 
-                        System.out.println("Type the gas consumption");
-                        consumption=sc.nextDouble();
-
-                        System.out.println("Type the electric consumption");
-                        electricConsumption=sc.nextDouble();
-
                         shop.addVehicle(basePrice, sellPrice, brand, model,  mileage, type, plate, carType, doorNum, isPolarized, 
-                        gasType, capacity, consumption, chargerType, duration, electricConsumption);
+                        gasType, capacity, chargerType, duration, displacement, sPrice, sYear, mPrice, mYear, coverage, gasLevel );
                         System.out.println(" Vehicle has been added");
                             
                         break;
@@ -214,16 +244,14 @@ public class Main{
                 break;
             case 2:
 
-                System.out.println("\nSelect an option \n 1)Standard \n 2)Sport\n 3)Scooter\n 2)Cross");
+                System.out.println("\nSelect an option \n 1)Standard \n 2)Sport\n 3)Scooter\n 4)Cross");
                 cycleType=sc.nextInt();
 
                 System.out.println("Type the capacity");
                 capacity=sc.nextDouble();
 
-                System.out.println("Type the consumption");
-                consumption=sc.nextDouble();
-
-                shop.addVehicle(basePrice, sellPrice, brand, model, mileage, type, plate, cycleType, capacity, consumption);
+                shop.addVehicle(basePrice, sellPrice, brand, model, mileage, type, plate, cycleType, capacity, displacement, sPrice, sYear, 
+                    mPrice, mYear, coverage, gasLevel);
                 System.out.println(" Vehicle has been added");
 
                 break;
@@ -268,7 +296,7 @@ public class Main{
 
             case 2:
 
-                System.out.println("\nSelect an option \n 1)Regular \n 2)Diesel \n 2)Extra");
+                System.out.println("\nSelect an option \n 1)Regular \n 2)Diesel \n 3)Extra");
                 filter2=sc.nextInt();
 
                 switch(filter2) {
@@ -323,5 +351,19 @@ public class Main{
                 System.out.println("invalid option");
             
             }
+    }
+
+    public void calculateTotalPrice(){
+
+        String plate;
+        int pos;
+
+        System.out.println("\nType the plate");
+        plate=sc.next();
+
+        pos= shop.searchPlate(plate);
+
+        System.out.println("Total value is: " + shop.calculatePrice(pos));
+
     }
 }
