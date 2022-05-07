@@ -41,7 +41,10 @@ public abstract class Document{
         this.image=image;
     }
 
-    //Getter
+    
+    /** 
+     * @return int
+     */
     public int getYear(){
         return year;
     }

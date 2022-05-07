@@ -114,19 +114,34 @@ public abstract class Vehicle {
         return valid;
     }
 
-    //Getters
+    
+    /** 
+     * @return VehicleType
+     */
     public VehicleType getType(){
         return type;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getPlate(){
         return plate;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getBasePrice(){
         return basePrice;
     }
 
+    
+    /** 
+     * @return Document[]
+     */
     public Document[] getDocuments(){
         return documents;
     }

@@ -56,7 +56,11 @@ public class Gas extends Automobile{
         
     }
 
-    //Getter
+    
+    /** 
+     * 
+     * @return GasType
+     */
     public GasType getGasType(){
         return  gasType;
     }

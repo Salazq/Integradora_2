@@ -296,7 +296,7 @@ public class Main{
 	* Method that recives the selection criteria of the vehicles and shows their informtion
 	* */
     public void showInformation(){
-
+        
         int filter1;
         int filter2;
 
