@@ -2,10 +2,22 @@ package ui;
 import java.util.ArrayList;
 import model.*;
 
+/**
+ * Init
+ * @author JuanSalazar
+ * @since May 2022
+ * @version 1.0
+ */
+
 public class Init {
 
     public Init() { }
 
+
+    /**
+	* Method that creates default objects
+	* @return vehicles ArrayList <Vehicle>, Arraylist with the created obj
+	* */
     public ArrayList <Vehicle> initVehicles(){
 
         ArrayList <Vehicle> vehicles= new ArrayList<Vehicle>();

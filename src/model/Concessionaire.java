@@ -1,20 +1,49 @@
 package model;
 import java.util.ArrayList;
 
-
+/**
+ * Concessionaire
+ * @author JuanSalazar
+ * @since May 2022
+ * @version 1.0
+ */
 public class Concessionaire {
 
+    /**
+	*  vehcicles is the ArrayList var to save the objects
+	* */
     private ArrayList <Vehicle> vehicles;
-    
 
-    
+    /**
+	* constructor of the class
+    * @param vehicles ArrayList <Vehicle>, must be initialized
+	* */
     public Concessionaire( ArrayList <Vehicle> vehicles){
 
         this.vehicles= vehicles;
-
     }
 
-    //Motos
+    /**
+	* Method to create a MotorCycle obj and add it to the ArrayList
+	*<b> pre:</b> vehicles must be initialized
+    *<b> pos:</b> obj added to vehicles
+	* @param basePrice double, must be initialized
+	* @param sellPrice double, must be initialized
+	* @param brand String, must be initialized
+	* @param model string, must be initialized
+	* @param milage double, must be initialized
+	* @param type int, must be 1 or 2
+	* @param plate String, must be initialized
+	* @param cycleType int, must be 1,2,3 or 4
+    * @param capacity double, must be initialized 
+	* @param displacement double, must be initialized
+	* @param sPrice double, must be initialized
+	* @param sYear int, must be initialized
+	* @param mPrice double, must be initialized
+	* @param mYear int, must be initialized
+	* @param coverage double, must be initialized
+	* @param gasLevel double, must be initialized
+	*/
     public void addVehicle(double basePrice, double sellPrice, String brand, String model, double mileage, int type, String plate, int
         cycleType, double capacity, double displacement, double sPrice, int sYear, double mPrice, int mYear, double coverage, double gasLevel) {
 
@@ -89,7 +118,30 @@ public class Concessionaire {
 		
 	}
 
-    //Gaolina
+    /**
+	* Method to create a Gas obj and add it to the ArrayList
+	*<b> pre:</b> vehicles must be initialized
+    *<b> pos:</b> obj added to vehicles
+	* @param basePrice double, must be initialized
+	* @param sellPrice double, must be initialized
+	* @param brand String, must be initialized
+	* @param model string, must be initialized
+	* @param milage double, must be initialized
+	* @param type int, must be 1 or 2
+	* @param plate String, must be initialized
+	* @param cType int, must be 1,2, or 3
+    * @param doorNum int, must be initialized
+    * @param polarized boolean, must be initialized
+    * @param gType int, must be 1,2 or 3
+    * @param capacity double, must be initialized 
+	* @param displacement double, must be initialized
+	* @param sPrice double, must be initialized
+	* @param sYear int, must be initialized
+	* @param mPrice double, must be initialized
+	* @param mYear int, must be initialized
+	* @param coverage double, must be initialized
+	* @param gasLevel double, must be initialized
+	*/
     public void addVehicle(double basePrice, double sellPrice, String brand, String model, double mileage, int type,
         String plate, int cType, int doorNum, boolean polarized, int gType, double capacity, double displacement, double sPrice, int sYear, double mPrice, int mYear, double coverage, double gasLevel) {
 
@@ -172,7 +224,31 @@ public class Concessionaire {
 		
 	}
 
-    //Electrico
+    /**
+	* Method to create an Electric obj and add it to the ArrayList
+	*<b> pre:</b> vehicles must be initialized
+    *<b> pos:</b> obj added to vehicles
+	* @param basePrice double, must be initialized
+	* @param sellPrice double, must be initialized
+	* @param brand String, must be initialized
+	* @param model string, must be initialized
+	* @param milage double, must be initialized
+	* @param type int, must be 1 or 2
+	* @param plate String, must be initialized
+	* @param cType int, must be 1,2, or 3
+    * @param doorNum int, must be initialized
+    * @param polarized boolean, must be initialized
+    * @param chType int, must be 1 or 2
+    * @param duration double, must be initialized 
+	* @param displacement double, must be initialized
+	* @param sPrice double, must be initialized
+	* @param sYear int, must be initialized
+	* @param mPrice double, must be initialized
+	* @param mYear int, must be initialized
+	* @param coverage double, must be initialized
+	* @param gasLevel double, must be initialized
+	*/
+
     public void addVehicle(double basePrice, double sellPrice, String brand, String model, double mileage, int type,
         String plate, int cType, int doorNum, boolean polarized, int chType, double duration, double displacement, String l, double sPrice, int sYear, double mPrice, int mYear, double coverage, double gasLevel) {
 
@@ -255,7 +331,32 @@ public class Concessionaire {
 		
 	}
 
-    //Híbrido
+    /**
+	* Method to create an Hibrid obj and add it to the ArrayList
+	*<b> pre:</b> vehicles must be initialized
+    *<b> pos:</b> obj added to vehicles
+	* @param basePrice double, must be initialized
+	* @param sellPrice double, must be initialized
+	* @param brand String, must be initialized
+	* @param model string, must be initialized
+	* @param milage double, must be initialized
+	* @param type int, must be 1 or 2
+	* @param plate String, must be initialized
+	* @param cType int, must be 1,2, or 3
+    * @param doorNum int, must be initialized
+    * @param polarized boolean, must be initialized
+    * @param gType int, must be , 2 or 3
+    * @param capacity int, must be initialized
+    * @param chType int, must be 1 or 2
+    * @param duration double, must be initialized 
+	* @param displacement double, must be initialized
+	* @param sPrice double, must be initialized
+	* @param sYear int, must be initialized
+	* @param mPrice double, must be initialized
+	* @param mYear int, must be initialized
+	* @param coverage double, must be initialized
+	* @param gasLevel double, must be initialized
+	*/
     public void addVehicle(double basePrice, double sellPrice, String brand, String model, double mileage, int type,
         String plate, int cType, int doorNum, boolean polarized, int gType, double capacity, int chType, double duration, 
         double displacement, double sPrice, int sYear, double mPrice, int mYear, double coverage, double gasLevel) {
@@ -351,10 +452,15 @@ public class Concessionaire {
             Vehicle newHibridCar = new Hibrid(basePrice, sellPrice, brand, model, mileage, vehicleType,
             plate, carType, doorNum, polarized, gasType, capacity, chargeType,  duration, displacement, documents);
             vehicles.add(newHibridCar);
-		
 	}
 
-
+    /**
+	* Method to create an Hibrid obj and add it to the ArrayList
+	*<b> pre:</b> vehicles must be initialized
+	* @param filter1 int, must be 1,2 or 3
+	* @param filter2 int, must be 1,2 or 3
+    * @return out String, list of the vehicles info according to the filters
+	*/
     public String showInfo(int filter1, int filter2) {
 
         String out="";
@@ -371,7 +477,7 @@ public class Concessionaire {
 
                             if (vehicles.get(i) instanceof Automobile)
                 
-                                out+= "\n---------Vehicle---------\n" + vehicles.get(i).toString() + "\n";
+                                out+= "\n---------Vehicle---------\n" + "Total price: " + calculatePrice(i) + vehicles.get(i).toString() + "\n";
                         }
                         break;
 
@@ -381,7 +487,7 @@ public class Concessionaire {
 
                             if (vehicles.get(i) instanceof Motorcycle)
             
-                                out+= "\n---------Vehicle---------\n" + vehicles.get(i).toString() + "\n";
+                                out+= "\n---------Vehicle---------\n" + "Total price: "+ calculatePrice(i) +  vehicles.get(i).toString() + "\n";
                         }
                         break;
                     default:
@@ -400,7 +506,7 @@ public class Concessionaire {
 
                             if ((vehicles.get(i)instanceof Gas) && (((Gas)vehicles.get(i)).getGasType().equals(GasType.REGULAR)))
             
-                                out+= "\n---------Vehicle---------\n" + vehicles.get(i).toString() + "\n";
+                                out+= "\n---------Vehicle---------\n" + "Total price: "+ calculatePrice(i) +  vehicles.get(i).toString() + "\n";
                         }
         
                         break;
@@ -410,7 +516,7 @@ public class Concessionaire {
 
                             if ((vehicles.get(i)instanceof Gas) && (((Gas)vehicles.get(i)).getGasType().equals(GasType.DIESEL)))
             
-                                out+= "\n---------Vehicle---------\n" + vehicles.get(i).toString() + "\n";
+                                out+= "\n---------Vehicle---------\n" + "Total price: "+ calculatePrice(i) +  vehicles.get(i).toString() + "\n";
                         }
                         break;
 
@@ -420,7 +526,7 @@ public class Concessionaire {
 
                             if ((vehicles.get(i)instanceof Gas) && (((Gas)vehicles.get(i)).getGasType().equals(GasType.EXTRA)))
             
-                                out+= "\n---------Vehicle---------\n" + vehicles.get(i).toString() + "\n";
+                                out+= "\n---------Vehicle---------\n" + "Total price: "+ calculatePrice(i) +  vehicles.get(i).toString() + "\n";
                         }
                         
                         break;
@@ -440,7 +546,7 @@ public class Concessionaire {
 
                             if (((vehicles.get(i)).getType().equals(VehicleType.NEW)))
             
-                                out+= "\n---------Vehicle---------\n" + vehicles.get(i).toString() + "\n";
+                                out+= "\n---------Vehicle---------\n" + "Total price: "+ calculatePrice(i) +  vehicles.get(i).toString() + "\n";
                         }
         
                         break;
@@ -450,7 +556,7 @@ public class Concessionaire {
 
                             if (((vehicles.get(i)).getType().equals(VehicleType.USED)))
             
-                                out+= "\n---------Vehicle---------\n" + vehicles.get(i).toString() + "\n";
+                                out+= "\n---------Vehicle---------\n" + "Total price: "+ calculatePrice(i) + vehicles.get(i).toString() + "\n";
                         }
                         
                         break;
@@ -468,6 +574,13 @@ public class Concessionaire {
         return out;
 	}
 
+
+    /**
+	* Method to find an obj position in the ArrayList
+	*<b> pre:</b> vehicles must be initialized
+	* @param plate String, must be a initialized
+    * @return pos int, position of the vehicle in the ArrayList, -1 if not found
+	*/
     public int searchPlate(String plate){
 
         boolean found=false;
@@ -483,6 +596,12 @@ public class Concessionaire {
         return pos;
     }
 
+    /**
+	* Method to calculate the total sell price of a vehicle
+	*<b> pre:</b> vehicles must be initialized
+	* @param pos int, must be an existing position in the ArrayList
+    * @return totalPrice double, sell price of the vehicle
+	*/
     public double calculatePrice(int pos){
 
         double basePrice= vehicles.get(pos).getBasePrice();

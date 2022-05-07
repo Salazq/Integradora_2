@@ -2,12 +2,28 @@ package ui;
 import java.util.Scanner;
 import model.Concessionaire;
 
+/**
+ * Main
+ * @author JuanSalazar
+ * @since May 2022
+ * @version 1.0
+ */
+
 public class Main{
 
-
+    /**
+	*  shop is the controller obj of the program
+	* */
     private Concessionaire shop;
+
+    /**
+	*  sc is the var to read inputs
+	* */
 	private Scanner sc;
 	
+    /**
+	*  constructor of the class
+	* */
 	public Main(){
 
         Init init = new Init();
@@ -16,6 +32,10 @@ public class Main{
 
     }
 
+    /**
+	* Main method of the class
+	** @param args String[]
+	*/
     public static void main(String[] args) {
 
 		Main m = new Main();
@@ -29,13 +49,17 @@ public class Main{
 
 	}
 
+    /**
+	* Method that shows the menu of the program and recives the selection
+	* @return option int, reference of the selected option
+	* */
     public int showMenu() {
 		int option=0;
 
 		System.out.println(
 				"\nSelect an option\n" +
 				"(1) Register a vehicle\n" +
-                "(2) Calculate vehicle's sell price\n" +
+                "(2) Calculate vehicle's total sell price\n" +
 				"(3) Show vechicles information\n" +
                 "(0) Out\n"
 				);
@@ -45,6 +69,10 @@ public class Main{
 		return option;
 	}
 
+    /**
+	* Method that calls the methods to execute the selected option
+	*@param option int,must be initialized
+	* */
     public void executeOperation(int operation) {
 		
 		switch(operation) {
@@ -68,6 +96,9 @@ public class Main{
 		}
 	}
 
+    /**
+	* Method that recives the values ​​needed to register a vehicle
+	* */
     public void registerVehicle(){
 
         int filter1;
@@ -261,12 +292,13 @@ public class Main{
             }
     }
 
-
+    /**
+	* Method that recives the selection criteria of the vehicles and shows their informtion
+	* */
     public void showInformation(){
 
         int filter1;
         int filter2;
-
 
         System.out.println("\nSelect an option \n 1)Vehicle Type \n 2)Fuel Type\n 3)New/Used");
         filter1=sc.nextInt();
@@ -281,16 +313,15 @@ public class Main{
                 switch(filter2) {
 
                     case 1:
-
                         System.out.println(shop.showInfo(filter1, filter2));
-        
                         break;
+
                     case 2:
                         System.out.println(shop.showInfo(filter1, filter2));
                         break;
+
                     default:
                         System.out.println("invalid option");
-                    
                     }
                 break;
 
@@ -302,24 +333,19 @@ public class Main{
                 switch(filter2) {
 
                     case 1:
-
                          System.out.println(shop.showInfo(filter1, filter2));
-        
                         break;
-                    case 2:
 
+                    case 2:
                         System.out.println(shop.showInfo(filter1, filter2));
-                        
                         break;
 
                     case 3:
-
                         System.out.println(shop.showInfo(filter1, filter2));
-                        
                         break;
+
                     default:
                         System.out.println("invalid option");
-                    
                     }
                 break;
                 
@@ -332,27 +358,26 @@ public class Main{
                 switch(filter2) {
 
                     case 1:
-
                         System.out.println(shop.showInfo(filter1, filter2));
-        
                         break;
+
                     case 2:
-
                         System.out.println(shop.showInfo(filter1, filter2));
-                        
                         break;
+
                     default:
                         System.out.println("invalid option");
                     }   
-                    
                 break;
     
             default:
                 System.out.println("invalid option");
-            
             }
     }
 
+    /**
+	* Method that recives the plate of a vehicle and shows its total sell price
+	* */
     public void calculateTotalPrice(){
 
         String plate;
@@ -363,7 +388,12 @@ public class Main{
 
         pos= shop.searchPlate(plate);
 
-        System.out.println("Total value is: " + shop.calculatePrice(pos));
+        if (pos==-1){
 
+            System.out.println("This plate is not registered");
+        }
+        else{
+            System.out.println("Total value is: " + shop.calculatePrice(pos));
+        }
     }
 }
