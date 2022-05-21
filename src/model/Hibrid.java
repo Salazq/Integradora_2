@@ -65,7 +65,7 @@ public class Hibrid extends Automobile{
 	* @param displacement double, must be initialized
 	* @param documents Documet[], must be initialized
 	*/
-    public Hibrid(double basePrice, double sellPrice, String brand, String model, double mileage, VehicleType type,
+    public Hibrid(double basePrice, double sellPrice, String brand, int model, double mileage, VehicleType type,
             String plate, CarType carType, int doorNum, boolean polarized, GasType gasType, double capacity, ChargeType chargeType,
             double duration, double displacement,  Document[] documents){
 

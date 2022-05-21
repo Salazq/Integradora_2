@@ -42,7 +42,7 @@ public class Motorcycle extends Vehicle{
 	* @param displacement double, must be initialized
 	* @param documents Documet[], must be initialized
 	*/
-    public Motorcycle(double basePrice, double sellPrice, String brand, String model, double mileage, VehicleType type, String plate, CycleType
+    public Motorcycle(double basePrice, double sellPrice, String brand, int model, double mileage, VehicleType type, String plate, CycleType
     cycleType, double capacity, double displacement, Document[] documents){
 
         super(basePrice, sellPrice, brand, model, mileage, type, plate, displacement, documents);

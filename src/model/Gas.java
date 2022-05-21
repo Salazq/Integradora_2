@@ -45,7 +45,7 @@ public class Gas extends Automobile{
 	* @param displacement double, must be initialized
 	* @param documents Documet[], must be initialized
 	*/
-    public Gas(double basePrice, double sellPrice, String brand, String model, double mileage, VehicleType type,
+    public Gas(double basePrice, double sellPrice, String brand, int model, double mileage, VehicleType type,
             String plate, CarType carType, int doorNum, boolean polarized, GasType gasType, double capacity, double displacement,
             Document[] documents) {
 

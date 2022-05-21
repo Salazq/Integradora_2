@@ -45,7 +45,7 @@ public class Electric extends Automobile{
 	* @param displacement double, must be initialized
 	* @param documents Documet[], must be initialized
 	*/
-    public Electric(double basePrice, double sellPrice, String brand, String model, double mileage, VehicleType type,
+    public Electric(double basePrice, double sellPrice, String brand, int model, double mileage, VehicleType type,
             String plate, CarType carType, int doorNum, boolean polarized, ChargeType chargeType, double duration, double displacement,
             Document[] documents) {
 

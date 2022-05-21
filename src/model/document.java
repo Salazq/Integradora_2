@@ -7,7 +7,7 @@ package model;
  * @version 1.0
  */
 
-public abstract class Document{
+public class Document{
 
     /**
 	*  var to save the price of the document
@@ -47,6 +47,13 @@ public abstract class Document{
      */
     public int getYear(){
         return year;
+    }
+
+    /** 
+     * @return int[][]
+     */
+    public int[][] getImage(){
+        return image;
     }
 
 }

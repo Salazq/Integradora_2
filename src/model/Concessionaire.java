@@ -15,6 +15,11 @@ public class Concessionaire {
     private ArrayList <Vehicle> vehicles;
 
     /**
+	*  var to set the current year
+	* */
+    protected final static int CURRENT_YEAR=2022;
+
+    /**
 	* constructor of the class
     * @param vehicles ArrayList <Vehicle>, must be initialized
 	* */
@@ -44,8 +49,9 @@ public class Concessionaire {
 	* @param coverage double, must be initialized
 	* @param gasLevel double, must be initialized
 	*/
-    public void addVehicle(double basePrice, double sellPrice, String brand, String model, double mileage, int type, String plate, int
-        cycleType, double capacity, double displacement, double sPrice, int sYear, double mPrice, int mYear, double coverage, double gasLevel) {
+    public void addVehicle(double basePrice, double sellPrice, String brand, int model, double mileage, int type, String plate, int
+        cycleType, double capacity, double displacement, double sPrice, int sYear, double mPrice, int mYear, double coverage, 
+        double gasLevel, double cPrice, int cYear) {
 
         VehicleType vehicleType;
         CycleType motorCycleType;
@@ -74,6 +80,18 @@ public class Concessionaire {
 			}
             Document newReview = new MechanicalReview(mPrice,mYear, image, gasLevel);
             documents[1]=newReview;
+        }
+        if (cYear!=0){
+
+            int[][] image=new int[4][4];
+
+            for (int i=0; i<4; i++){
+				for (int e=0; e<4; e++){
+					image[i][e] = (int)(Math.random() * (10 - 0)) + 0;
+				}
+			}
+            Document newCard = new Document(mPrice,mYear, image);
+            documents[2]=newCard;
         }
 
         switch(type) {
@@ -142,8 +160,9 @@ public class Concessionaire {
 	* @param coverage double, must be initialized
 	* @param gasLevel double, must be initialized
 	*/
-    public void addVehicle(double basePrice, double sellPrice, String brand, String model, double mileage, int type,
-        String plate, int cType, int doorNum, boolean polarized, int gType, double capacity, double displacement, double sPrice, int sYear, double mPrice, int mYear, double coverage, double gasLevel) {
+    public void addVehicle(double basePrice, double sellPrice, String brand, int model, double mileage, int type,
+        String plate, int cType, int doorNum, boolean polarized, int gType, double capacity, double displacement, double sPrice, 
+        int sYear, double mPrice, int mYear, double coverage, double gasLevel, double cPrice, int cYear) {
 
         VehicleType vehicleType;
         CarType carType;
@@ -173,6 +192,19 @@ public class Concessionaire {
 			}
             Document newReview = new MechanicalReview(mPrice,mYear, image, gasLevel);
             documents[1]=newReview;
+        }
+
+        if (cYear!=0){
+
+            int[][] image=new int[4][4];
+
+            for (int i=0; i<4; i++){
+				for (int e=0; e<4; e++){
+					image[i][e] = (int)(Math.random() * (10 - 0)) + 0;
+				}
+			}
+            Document newCard = new Document(mPrice,mYear, image);
+            documents[2]=newCard;
         }
 
 
@@ -249,8 +281,9 @@ public class Concessionaire {
 	* @param gasLevel double, must be initialized
 	*/
 
-    public void addVehicle(double basePrice, double sellPrice, String brand, String model, double mileage, int type,
-        String plate, int cType, int doorNum, boolean polarized, int chType, double duration, double displacement, String l, double sPrice, int sYear, double mPrice, int mYear, double coverage, double gasLevel) {
+    public void addVehicle(double basePrice, double sellPrice, String brand, int model, double mileage, int type,
+        String plate, int cType, int doorNum, boolean polarized, int chType, double duration, double displacement, String l, 
+        double sPrice, int sYear, double mPrice, int mYear, double coverage, double gasLevel, double cPrice, int cYear) {
 
         VehicleType vehicleType;
         CarType carType;
@@ -280,6 +313,18 @@ public class Concessionaire {
 			}
             Document newReview = new MechanicalReview(mPrice,mYear, image, gasLevel);
             documents[1]=newReview;
+        }
+        if (cYear!=0){
+
+            int[][] image=new int[4][4];
+
+            for (int i=0; i<4; i++){
+				for (int e=0; e<4; e++){
+					image[i][e] = (int)(Math.random() * (10 - 0)) + 0;
+				}
+			}
+            Document newCard = new Document(mPrice,mYear, image);
+            documents[2]=newCard;
         }
 
         switch(type) {
@@ -357,9 +402,9 @@ public class Concessionaire {
 	* @param coverage double, must be initialized
 	* @param gasLevel double, must be initialized
 	*/
-    public void addVehicle(double basePrice, double sellPrice, String brand, String model, double mileage, int type,
+    public void addVehicle(double basePrice, double sellPrice, String brand, int model, double mileage, int type,
         String plate, int cType, int doorNum, boolean polarized, int gType, double capacity, int chType, double duration, 
-        double displacement, double sPrice, int sYear, double mPrice, int mYear, double coverage, double gasLevel) {
+        double displacement, double sPrice, int sYear, double mPrice, int mYear, double coverage, double gasLevel, double cPrice, int cYear) {
 
 
         VehicleType vehicleType;
@@ -391,6 +436,18 @@ public class Concessionaire {
 			}
             Document newReview = new MechanicalReview(mPrice,mYear, image, gasLevel);
             documents[1]=newReview;
+        }
+        if (cYear!=0){
+
+            int[][] image=new int[4][4];
+
+            for (int i=0; i<4; i++){
+				for (int e=0; e<4; e++){
+					image[i][e] = (int)(Math.random() * (10 - 0)) + 0;
+				}
+			}
+            Document newCard = new Document(mPrice,mYear, image);
+            documents[2]=newCard;
         }
 
         switch(type) {
@@ -640,6 +697,100 @@ public class Concessionaire {
         return totalPrice;
     }
 
+
+    public String showDocsList(int pos){
+
+        String out=" ";
+        String status="";
+        String num;
+        int ver=1;
+
+        Document []documents= vehicles.get(pos).getDocuments();
+        int [][] image;
+
+        for (int i=0; i<documents.length; i++){
+            num="";
+            status="Valid";
+
+            if ( documents[i]!=null){
+
+                switch (i){
+
+                    case 0:
+                        image=documents[i].getImage();
+                        out+="\n------------Soat-------------";
+
+                        for (int e=0; e <image.length; e++){
+
+                            num+=image[e][0];
+                        }
+                        for (int e=1; e <image.length; e++){
+
+                            num+=image[image.length-1][e];
+                        }
+                        break;
+
+                    case 1:
+                        image=documents[i].getImage();
+                        out+="\n------Mechanical review------";
+
+                        for (int e=0; e <image.length; e++){
+
+                            num+=image[0][e];
+                        }
+                        for (int e=image.length-2; e >0; e--){
+                            num+=image[ver][e];
+                            ver++;
+                        }
+                        for (int e=0; e <image.length; e++){
+
+                            num+=image[image.length-1][e];
+                        }
+
+                        break;
+
+                    case 2:
+                        image=documents[i].getImage();
+                        out+="\n--------Property card--------";
+
+                        for (int e=(image.length-1); e>= 0; e-- ) { 
+                            for (int j = (image.length-1); j >= 0; j--) { 
+
+                                if ( (e+j) % 2 ==0){
+                                    num+=image[e][j];
+                                }
+                            }
+                        }
+
+                        break;
+                }
+
+                if (documents[i].getYear()!=CURRENT_YEAR){
+
+                    status="Expired";
+                }
+
+                out+=" \nStatus: " + status + "\nImage:\n" + printImage(documents[i].getImage()) + "\nNumber: " + num+ "\n";
+
+            }
+        }
+
+        if (out.equals(" ")){
+            out="This vehicle does not have any documents";
+        }
+        return out;
+    }
+
+    private String printImage(int[][] image) {
+		String print ="";
+		for (int i=0; i< image.length; i++ ) { 
+			for (int j = 0; j < image[0].length; j++) { 
+				print += image[i][j] + " ";
+			}
+			print += "\n";
+		}
+		return print;
+	}
 
     
 }

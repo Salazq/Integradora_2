@@ -23,7 +23,7 @@ public abstract class Vehicle {
     /**
 	*  var to save the model of the vehicle
 	* */
-    private String model;
+    private int model;
     /**
 	*  var to save the milage of the vehicle
 	* */
@@ -44,10 +44,6 @@ public abstract class Vehicle {
 	*  var to save the documents of the vehicle
 	* */
     private Document[] documents;
-    /**
-	*  var to set the current year
-	* */
-    private final static int CURRENT_YEAR=2022;
 
     /**
 	* Constructor of the class
@@ -72,14 +68,14 @@ public abstract class Vehicle {
 	* @param basePrice double, must be initialized
 	* @param sellPrice double, must be initialized
 	* @param brand String, must be initialized
-	* @param model string, must be initialized
+	* @param model int, must be initialized
 	* @param milage double, must be initialized
 	* @param vehicleType VehicleType, must be initialized
 	* @param plate String, must be initialized
 	* @param displacement double, must be initialized
 	* @param documents Documet[], must be initialized
 	*/
-    public Vehicle (double basePrice, double sellPrice, String brand, String model, double mileage, VehicleType type, String plate, 
+    public Vehicle (double basePrice, double sellPrice, String brand, int model, double mileage, VehicleType type, String plate, 
         double displacement, Document [] documents){
 
         this.basePrice= basePrice;
@@ -106,7 +102,7 @@ public abstract class Vehicle {
         boolean valid=true;
 
         for (int i=0; i<2; i++){
-            if ((documents[i]==null)  || ((documents[i].getYear())!=CURRENT_YEAR)){
+            if ((documents[i]==null)  || ((documents[i].getYear())!=Concessionaire.CURRENT_YEAR)){
 
                 valid=false;
             }

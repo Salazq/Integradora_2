@@ -43,7 +43,7 @@ public abstract class Automobile extends Vehicle {
 	* @param displacement double, must be initialized
 	* @param documents Documet[], must be initialized
 	*/
-    public Automobile(double basePrice, double sellPrice, String brand, String model, double mileage, VehicleType type, String plate, CarType
+    public Automobile(double basePrice, double sellPrice, String brand, int model, double mileage, VehicleType type, String plate, CarType
     carType, int doorNum, boolean polarized, double displacement, Document [] documents){
 
         super(basePrice, sellPrice, brand, model, mileage, type, plate, displacement, documents);

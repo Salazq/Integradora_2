@@ -61,6 +61,7 @@ public class Main{
 				"(1) Register a vehicle\n" +
                 "(2) Calculate vehicle's total sell price\n" +
 				"(3) Show vechicles information\n" +
+                "(4) Show vechicles' documents\n" +
                 "(0) Out\n"
 				);
 
@@ -90,6 +91,10 @@ public class Main{
             showInformation();  
 			break;
 
+        case 4:
+            showDocs();  
+			break;
+
 		default:
 			System.out.println("invalid option");
 		
@@ -107,7 +112,7 @@ public class Main{
         double basePrice;
         double sellPrice;
         String brand;
-        String model;
+        int model;
         double mileage;
         int type;
         String plate;
@@ -137,6 +142,11 @@ public class Main{
         int mYear=0;
         double gasLevel=0;
 
+        int hasCard;
+        double cPrice=0;
+        int cYear=0;
+
+
 
         System.out.println("\nType the base price");
         basePrice=sc.nextDouble();
@@ -148,7 +158,7 @@ public class Main{
         brand=sc.next();
 
         System.out.println("\nType the model");
-        model=sc.next();
+        model=sc.nextInt();
 
         System.out.println("\nType the mileage");
         mileage=sc.nextDouble();
@@ -187,6 +197,18 @@ public class Main{
 
             System.out.println("\nType the gas level");
             gasLevel=sc.nextDouble();
+        }
+
+        System.out.println("\nDoes it have property card \n 1)Yes\n 2)No");
+        hasCard=sc.nextInt();
+
+        if (hasCard==1){
+
+            System.out.println("\nType the price");
+            cPrice=sc.nextDouble();
+
+            System.out.println("\nType the year");
+            cYear=sc.nextInt();
         }
 
         System.out.println("\nSelect an option \n 1)New\n 2)Used");
@@ -228,7 +250,7 @@ public class Main{
                         capacity=sc.nextDouble();
 
                         shop.addVehicle(basePrice, sellPrice, brand, model,  mileage, type, plate, carType, doorNum, isPolarized, 
-                        gasType, capacity, displacement, sPrice, sYear, mPrice, mYear, coverage, gasLevel);
+                        gasType, capacity, displacement, sPrice, sYear, mPrice, mYear, coverage, gasLevel, cPrice, cYear);
                         System.out.println(" Vehicle has been added");
  
                         break;
@@ -241,7 +263,7 @@ public class Main{
                         duration=sc.nextDouble();
 
                         shop.addVehicle(basePrice, sellPrice, brand, model,  mileage, type, plate, carType, doorNum, isPolarized, 
-                        chargerType, duration, displacement,"l", sPrice, sYear, mPrice, mYear, coverage, gasLevel);
+                        chargerType, duration, displacement,"l", sPrice, sYear, mPrice, mYear, coverage, gasLevel, cPrice, cYear);
                         System.out.println(" Vehicle has been added");
                         
                         break;
@@ -261,7 +283,7 @@ public class Main{
                         duration=sc.nextDouble();
 
                         shop.addVehicle(basePrice, sellPrice, brand, model,  mileage, type, plate, carType, doorNum, isPolarized, 
-                        gasType, capacity, chargerType, duration, displacement, sPrice, sYear, mPrice, mYear, coverage, gasLevel );
+                        gasType, capacity, chargerType, duration, displacement, sPrice, sYear, mPrice, mYear, coverage, gasLevel, cPrice, cYear);
                         System.out.println(" Vehicle has been added");
                             
                         break;
@@ -282,7 +304,7 @@ public class Main{
                 capacity=sc.nextDouble();
 
                 shop.addVehicle(basePrice, sellPrice, brand, model, mileage, type, plate, cycleType, capacity, displacement, sPrice, sYear, 
-                    mPrice, mYear, coverage, gasLevel);
+                    mPrice, mYear, coverage, gasLevel, cPrice, cYear);
                 System.out.println(" Vehicle has been added");
 
                 break;
@@ -394,6 +416,25 @@ public class Main{
         }
         else{
             System.out.println("Total value is: " + shop.calculatePrice(pos));
+        }
+    }
+
+    public void showDocs(){
+
+        String plate;
+        int pos;
+
+        System.out.println("\nType the plate");
+        plate=sc.next();
+
+        pos= shop.searchPlate(plate);
+
+        if (pos==-1){
+
+            System.out.println("This plate is not registered");
+        }
+        else{
+            System.out.println(shop.showDocsList(pos));
         }
     }
 }
