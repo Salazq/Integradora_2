@@ -1,5 +1,6 @@
 package model;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Concessionaire
@@ -20,12 +21,92 @@ public class Concessionaire {
     protected final static int CURRENT_YEAR=2022;
 
     /**
+	*  
+	* */
+    private Vehicle [][] parking;
+
+    /**
+
+    /**
 	* constructor of the class
     * @param vehicles ArrayList <Vehicle>, must be initialized
 	* */
     public Concessionaire( ArrayList <Vehicle> vehicles){
 
+
+
         this.vehicles= vehicles;
+        parking= new Vehicle[5][5];
+        int model;
+        int row;
+        for (int i=0; i<vehicles.size(); i++){
+
+            model= vehicles.get(i).getModel();
+
+            if (vehicles.get(i).getType().equals(VehicleType.USED) && model<2015){
+
+                switch (model){
+
+                    case 2014:
+
+                        row=emptyRow(0);
+                        if (row!=-1){
+                            parking[row][0]=vehicles.get(i);
+                        }
+
+                        break;
+                    
+                    case 2013:
+
+                        row=emptyRow(1);
+                        if (row!=-1){
+                            parking[row][1]=vehicles.get(i);
+                        }
+
+                        break;
+
+                    case 2012:
+
+                        row=emptyRow(2);
+                        if (row!=-1){
+                            parking[row][2]=vehicles.get(i);
+                        }
+
+                        break;
+
+                    case 2011:
+
+                        row=emptyRow(3);
+                        if (row!=-1){
+                            parking[row][3]=vehicles.get(i);
+                        }
+
+                        break;
+
+                    default:
+
+                        row=emptyRow(4);
+                        if (row!=-1){
+                            parking[row][4]=vehicles.get(i);
+                        }
+
+                        break;
+                }
+            }
+        }
+    }
+
+    public int emptyRow(int column){
+        int pos=-1;
+        boolean found=false;
+
+        for (int i=0; i<parking.length&&found==false; i++){
+            if (parking[i][column]==null){
+                pos=i;
+                found=true;
+            }
+        }
+        return pos;
     }
 
     /**
@@ -790,6 +871,58 @@ public class Concessionaire {
 			print += "\n";
 		}
 		return print;
+	}
+
+    
+
+
+
+    public String showPark() {
+		String out="|     2014    ||     2013    ||     2012    ||     2011    ||     Else    |\n";
+		String separator = "|-------------|";
+		String line = "" + String.join("", Collections.nCopies(parking[0].length, separator));
+		
+		String line1 ="";
+		String line2 = "";
+        String line3 = "";
+        String line4 = "";
+
+		for(int i=0 ;i<parking.length ; i++) {
+			line1 ="";
+		    line2 = "";
+            line3 = "";
+            line4 = "";
+			for(int j=0 ;j<parking[0].length; j++) {
+	
+				Vehicle current = parking[i][j];
+				
+                if (current==null) {
+
+                    line1 +="|             |";
+                    line2 +="|             |";
+                    line3 +="|             |";
+                    line4 +="|             |";
+                }else if (current instanceof Automobile) {
+                    line1 +="|    _____    |";
+                    line2 +="| __|__|__|__ |";
+                    line3 +="|(--_______--)|";
+                    line4 +="| (o)     (o) |";
+                }else{
+                    line1 +="|             |";
+                    line2 +="|   )/___     |";
+                    line3 +="| __//(___)   |";
+                    line4 +="|  (o)   (o)  |";
+                }
+			}
+            out+= line + "\n";
+			out+= line1 + "\n";
+            out+= line2 + "\n";
+			out+= line3 + "\n";
+			out+= line4 + "\n";
+		}
+			
+		out+= line + "\n";
+		return out;
 	}
 
     

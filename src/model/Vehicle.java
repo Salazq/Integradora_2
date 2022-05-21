@@ -118,6 +118,13 @@ public abstract class Vehicle {
         return type;
     }
 
+    /** 
+     * @return int
+     */
+    public int getModel(){
+        return model;
+    }
+
     
     /** 
      * @return String

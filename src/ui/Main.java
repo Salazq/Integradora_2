@@ -62,6 +62,7 @@ public class Main{
                 "(2) Calculate vehicle's total sell price\n" +
 				"(3) Show vechicles information\n" +
                 "(4) Show vechicles' documents\n" +
+                "(5) Show parking\n" +
                 "(0) Out\n"
 				);
 
@@ -93,6 +94,11 @@ public class Main{
 
         case 4:
             showDocs();  
+			break;
+
+        case 5:
+            //System.out.println(shop.printParking()); 
+            System.out.println(shop.showPark());  
 			break;
 
 		default:
