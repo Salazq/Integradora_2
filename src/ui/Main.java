@@ -63,6 +63,7 @@ public class Main{
 				"(3) Show vechicles information\n" +
                 "(4) Show vechicles' documents\n" +
                 "(5) Show parking\n" +
+                "(6) Show parking information\n" +
                 "(0) Out\n"
 				);
 
@@ -97,9 +98,13 @@ public class Main{
 			break;
 
         case 5:
-            //System.out.println(shop.printParking()); 
             System.out.println(shop.showPark());  
 			break;
+        
+        case 6:
+
+            showParkingInfo();
+            break;
 
 		default:
 			System.out.println("invalid option");
@@ -442,5 +447,53 @@ public class Main{
         else{
             System.out.println(shop.showDocsList(pos));
         }
+    }
+
+    public void showParkingInfo(){
+
+        int filter;
+        int year1;
+        int year2;
+
+        System.out.println("\nSelect an option \n 1)Vehicles list \n 2)Newest and oldest vehicle \n 3)Percentage of occupation");
+        filter=sc.nextInt();
+
+        switch(filter) {
+
+            case 1:
+
+                System.out.println("\nType the first year");
+                year1=sc.nextInt();
+                System.out.println("\nType the second year");
+                year2=sc.nextInt();
+
+                if (year1!=year2){
+
+                    int[]range=new int[2];
+                    range[0]=year1;
+                    range[1]=year2;
+
+                    System.out.println(shop.vehiclesInRange(range));
+                }
+
+                else{
+                    System.out.println("The years must be different");
+                }
+                break;
+
+            case 2:
+                System.out.println(shop.newestOldest());
+                break;
+
+            case 3:
+
+                System.out.println(shop.percentageOcupation());
+                
+                break;
+
+            default:
+                System.out.println("invalid option");
+            }   
+
     }
 }

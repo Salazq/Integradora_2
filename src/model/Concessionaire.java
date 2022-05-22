@@ -38,61 +38,67 @@ public class Concessionaire {
         this.vehicles= vehicles;
         parking= new Vehicle[5][5];
         int model;
-        int row;
         for (int i=0; i<vehicles.size(); i++){
 
             model= vehicles.get(i).getModel();
 
             if (vehicles.get(i).getType().equals(VehicleType.USED) && model<2015){
 
-                switch (model){
-
-                    case 2014:
-
-                        row=emptyRow(0);
-                        if (row!=-1){
-                            parking[row][0]=vehicles.get(i);
-                        }
-
-                        break;
-                    
-                    case 2013:
-
-                        row=emptyRow(1);
-                        if (row!=-1){
-                            parking[row][1]=vehicles.get(i);
-                        }
-
-                        break;
-
-                    case 2012:
-
-                        row=emptyRow(2);
-                        if (row!=-1){
-                            parking[row][2]=vehicles.get(i);
-                        }
-
-                        break;
-
-                    case 2011:
-
-                        row=emptyRow(3);
-                        if (row!=-1){
-                            parking[row][3]=vehicles.get(i);
-                        }
-
-                        break;
-
-                    default:
-
-                        row=emptyRow(4);
-                        if (row!=-1){
-                            parking[row][4]=vehicles.get(i);
-                        }
-
-                        break;
-                }
+                addToParking(i);
             }
+        }
+    }
+
+    public void addToParking(int pos){
+
+        int row;
+
+        switch (vehicles.get(pos).getModel()){
+
+            case 2014:
+
+                row=emptyRow(0);
+                if (row!=-1){
+                    parking[row][0]=vehicles.get(pos);
+                }
+
+                break;
+            
+            case 2013:
+
+                row=emptyRow(1);
+                if (row!=-1){
+                    parking[row][1]=vehicles.get(pos);
+                }
+
+                break;
+
+            case 2012:
+
+                row=emptyRow(2);
+                if (row!=-1){
+                    parking[row][2]=vehicles.get(pos);
+                }
+
+                break;
+
+            case 2011:
+
+                row=emptyRow(3);
+                if (row!=-1){
+                    parking[row][3]=vehicles.get(pos);
+                }
+
+                break;
+
+            default:
+
+                row=emptyRow(4);
+                if (row!=-1){
+                    parking[row][4]=vehicles.get(pos);
+                }
+
+                break;
         }
     }
 
@@ -214,6 +220,10 @@ public class Concessionaire {
         Vehicle newCycle = new Motorcycle(basePrice, sellPrice, brand, model, mileage, vehicleType, plate, motorCycleType, capacity,
             displacement, documents);
         vehicles.add(newCycle);
+
+        if (newCycle.getType().equals(VehicleType.USED) && model<2015){
+            addToParking(searchPlate(plate));
+        }
 		
 	}
 
@@ -334,6 +344,10 @@ public class Concessionaire {
         Vehicle newGasCar = new Gas(basePrice, sellPrice, brand, model, mileage, vehicleType,
         plate, carType, doorNum, polarized, gasType,  capacity, displacement, documents);
         vehicles.add(newGasCar);
+
+        if (newGasCar.getType().equals(VehicleType.USED) && model<2015){
+            addToParking(searchPlate(plate));
+        }
 		
 	}
 
@@ -454,6 +468,10 @@ public class Concessionaire {
         Vehicle newElectricCar = new Electric(basePrice, sellPrice, brand, model, mileage, vehicleType,
         plate, carType, doorNum, polarized, chargeType,  duration, displacement,  documents);
         vehicles.add(newElectricCar);
+
+        if (newElectricCar.getType().equals(VehicleType.USED) && model<2015){
+            addToParking(searchPlate(plate));
+        }
 		
 	}
 
@@ -590,6 +608,10 @@ public class Concessionaire {
             Vehicle newHibridCar = new Hibrid(basePrice, sellPrice, brand, model, mileage, vehicleType,
             plate, carType, doorNum, polarized, gasType, capacity, chargeType,  duration, displacement, documents);
             vehicles.add(newHibridCar);
+
+            if (newHibridCar.getType().equals(VehicleType.USED) && model<2015){
+                addToParking(searchPlate(plate));
+            }
 	}
 
     /**
@@ -873,10 +895,6 @@ public class Concessionaire {
 		return print;
 	}
 
-    
-
-
-
     public String showPark() {
 		String out="|     2014    ||     2013    ||     2012    ||     2011    ||     Else    |\n";
 		String separator = "|-------------|";
@@ -925,5 +943,106 @@ public class Concessionaire {
 		return out;
 	}
 
-    
+    public String vehiclesInRange(int[] range){
+
+        String out="";
+        int year1= range[0];
+        int year2= range[1];
+        int year3;
+
+        if (year2<year1){
+            year3=year1;
+            year1=year2;
+            year2=year3;
+        }
+
+        for (int i = 0; i <parking.length; i++) {
+
+            for (int e = 0; e <parking[0].length; e++) {
+
+                Vehicle current=parking[i][e];
+                
+                if (current!= null &&current.getModel()<=year2 && current.getModel()>=year1){
+
+                    out+= "\n---------Vehicle---------\n" + current.toString() + "\n";
+                }
+            }
+        }
+        return out;
+    }
+
+    public String newestOldest(){
+
+        String out="";
+        String outOldest="";
+        String outNewest="";
+        Vehicle newestVehicle= parking[0][0];
+        Vehicle oldestVehicle= parking[0][0];
+        int oldestYear=3000;
+        int newestYear=0;
+
+        for (int i = 0; i <parking.length; i++) {
+
+            for (int e = 0; e <parking[0].length; e++) {
+
+                Vehicle current=parking[i][e];
+                
+                if (current!= null && current.getModel()<oldestYear){
+
+                    oldestYear=current.getModel();
+                    oldestVehicle=current;
+
+                    outOldest= "\n---------Vehicle---------\n" + current.toString() + "\n";
+                }
+                if (current!= null&& !current.equals(oldestVehicle)  &&  current.getModel()==oldestYear){
+
+                    oldestYear=current.getModel();
+                    oldestVehicle=current;
+
+                    outOldest+= "\n---------Vehicle---------\n" + current.toString() + "\n";
+                }
+
+                if (current!= null && current.getModel()>newestYear){
+
+                    newestYear=current.getModel();
+                    newestVehicle=current;
+
+                    outNewest= "\n---------Vehicle---------\n" + current.toString() + "\n";
+                }
+                if (current!= null&& !current.equals(newestVehicle) &&  current.getModel()==newestYear){
+
+                    newestYear=current.getModel();
+                    newestVehicle=current;
+
+                    outNewest+= "\n---------Vehicle---------\n" + current.toString() + "\n";
+                }
+            }
+        }
+
+        out= "\n-------------------------------------Newest-------------------------------------\n"+ outNewest +
+             "\n-------------------------------------Oldest-------------------------------------\n" +outOldest;
+        return out;
+    }
+
+    public String percentageOcupation(){
+
+        int vehicles=0;
+        int spaces=0;
+        double percentage;
+
+        for (int i = 0; i <parking.length; i++) {
+
+            for (int e = 0; e <parking[0].length; e++) {
+
+                if (parking[i][e]!= null){
+                    vehicles++;
+                }
+                spaces++;
+            }
+        }
+
+        percentage= (vehicles*100) /spaces;
+
+        return "The percentage of ocupation is: " + percentage +"%";
+    }
 }
