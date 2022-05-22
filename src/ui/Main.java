@@ -137,7 +137,6 @@ public class Main{
         int polarized;
         boolean isPolarized;
 
-
         int gasType;
 
         int chargerType;
@@ -156,8 +155,6 @@ public class Main{
         int hasCard;
         double cPrice=0;
         int cYear=0;
-
-
 
         System.out.println("\nType the base price");
         basePrice=sc.nextDouble();
@@ -194,7 +191,6 @@ public class Main{
             System.out.println("\nType the coverage value");
             coverage=sc.nextDouble();
         }
-
         System.out.println("\nDoes it have mechanical review \n 1)Yes\n 2)No");
         hasReview=sc.nextInt();
 
@@ -209,7 +205,6 @@ public class Main{
             System.out.println("\nType the gas level");
             gasLevel=sc.nextDouble();
         }
-
         System.out.println("\nDoes it have property card \n 1)Yes\n 2)No");
         hasCard=sc.nextInt();
 
@@ -221,7 +216,6 @@ public class Main{
             System.out.println("\nType the year");
             cYear=sc.nextInt();
         }
-
         System.out.println("\nSelect an option \n 1)New\n 2)Used");
         type=sc.nextInt();
 
@@ -430,6 +424,9 @@ public class Main{
         }
     }
 
+    /**
+	* Method that recives the plate of a vehicle and shows its documents information
+	* */
     public void showDocs(){
 
         String plate;
@@ -449,6 +446,9 @@ public class Main{
         }
     }
 
+    /**
+	* Method that recives a renge of years and shows the information of the vehicles in there.
+	* */
     public void showParkingInfo(){
 
         int filter;

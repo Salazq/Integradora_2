@@ -21,7 +21,7 @@ public class Concessionaire {
     protected final static int CURRENT_YEAR=2022;
 
     /**
-	*  
+	*  var to save the parking matrix
 	* */
     private Vehicle [][] parking;
 
@@ -32,8 +32,6 @@ public class Concessionaire {
     * @param vehicles ArrayList <Vehicle>, must be initialized
 	* */
     public Concessionaire( ArrayList <Vehicle> vehicles){
-
-
 
         this.vehicles= vehicles;
         parking= new Vehicle[5][5];
@@ -49,6 +47,10 @@ public class Concessionaire {
         }
     }
 
+    /**
+	* Method that recives the position of a vehicle in the ArrayList and adds it to the parking matrix
+    *@param pos int, must be a index for the ArrayList
+	* */
     public void addToParking(int pos){
 
         int row;
@@ -102,6 +104,11 @@ public class Concessionaire {
         }
     }
 
+    /**
+	* Method to check the empty row in a colum of the parking matrix
+    *@param colum int, must be a valid colum in the matrix
+    *@return pos int, number of the row, -1 if the colum is full
+	* */
     public int emptyRow(int column){
         int pos=-1;
         boolean found=false;
@@ -800,7 +807,11 @@ public class Concessionaire {
         return totalPrice;
     }
 
-
+    /**
+	* Method to show the documents information of a vehicle
+    *@param p0s int, must be a valid index for the ArrayList
+    *@return out String, infromation of the documents.
+	* */
     public String showDocsList(int pos){
 
         String out=" ";
@@ -884,6 +895,11 @@ public class Concessionaire {
         return out;
     }
 
+    /**
+	* Method to print the image matrix of a document
+    *@param image int[][], must be initialized
+    *@return print String, String with the matrix numbers
+	* */
     private String printImage(int[][] image) {
 		String print ="";
 		for (int i=0; i< image.length; i++ ) { 
@@ -895,6 +911,10 @@ public class Concessionaire {
 		return print;
 	}
 
+    /**
+	* Method to print the parking matrix
+    *@return out String, String with the map of the parking
+	* */
     public String showPark() {
 		String out="|     2014    ||     2013    ||     2012    ||     2011    ||     Else    |\n";
 		String separator = "|-------------|";
@@ -943,6 +963,11 @@ public class Concessionaire {
 		return out;
 	}
 
+    /**
+	* Method to show the information of the vehcicles in a range of years
+    *@param range int[], must be initalized with two spaces
+    *@return String out, information of the vehicles
+	* */
     public String vehiclesInRange(int[] range){
 
         String out="";
@@ -971,6 +996,10 @@ public class Concessionaire {
         return out;
     }
 
+    /**
+	* Method to print the information of the newest and oldest car
+    *@return out String, information of the vehicles
+	* */
     public String newestOldest(){
 
         String out="";
@@ -1024,6 +1053,10 @@ public class Concessionaire {
         return out;
     }
 
+    /**
+	* Method to calculate the ocupation of the parking
+    *@return String, message with the percentage of ocupation
+	* */
     public String percentageOcupation(){
 
         int vehicles=0;
@@ -1040,7 +1073,6 @@ public class Concessionaire {
                 spaces++;
             }
         }
-
         percentage= (vehicles*100) /spaces;
 
         return "The percentage of ocupation is: " + percentage +"%";
