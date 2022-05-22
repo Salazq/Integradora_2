@@ -163,7 +163,7 @@ public abstract class Vehicle {
 	*/
     public String toString(){
         
-        return "\n Base price: " + basePrice + "\n Sell price: " + sellPrice + "\n Brand: " + brand + "\n Model: " + model + 
+        return "\n Base price: " + basePrice + "\n Brand: " + brand + "\n Model: " + model + 
         "\n Displacement: " + displacement + "\n Mileage: " + mileage + "\n Plate: " + plate;
     }
 

@@ -121,7 +121,7 @@ public class Main{
         int filter2;
 
         double basePrice;
-        double sellPrice;
+        double sellPrice=0;
         String brand;
         int model;
         double mileage;
@@ -158,9 +158,6 @@ public class Main{
 
         System.out.println("\nType the base price");
         basePrice=sc.nextDouble();
-
-        System.out.println("\nType the sell price");
-        sellPrice=sc.nextDouble();
 
         System.out.println("\nType the brand");
         brand=sc.next();
